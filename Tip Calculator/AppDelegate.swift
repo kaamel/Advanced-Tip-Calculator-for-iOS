@@ -12,10 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    static var lastBillAmount: Double?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let defaults = UserDefaults.standard
+        let lastBillTime = defaults.object(forKey: "lastBillTime") as? TimeInterval ?? 0
+        AppDelegate.lastBillAmount = defaults.object(forKey: "lastBillAmount") as! Double?
+        if (AppDelegate.lastBillAmount != nil) {
+            if (NSDate().timeIntervalSince1970 - lastBillTime > 600000) {
+                AppDelegate.lastBillAmount = nil
+            }
+        }
+        
         return true
     }
 
@@ -43,4 +52,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+extension String {
+    static let numberFormatter = NumberFormatter()
+    var doubleValue: Double {
+        String.numberFormatter.decimalSeparator = "."
+        if let result =  String.numberFormatter.number(from: self) {
+            return result.doubleValue
+        } else {
+            String.numberFormatter.decimalSeparator = ","
+            let currencySymbol = Locale.current.currencySymbol
+            let newString = self.replacingOccurrences(of: currencySymbol!, with: "")
+            if let result = String.numberFormatter.number(from: newString) {
+                return result.doubleValue
+            }
+        }
+        return 0
+    }
+}
+
+extension Double {
+    static var currencyFormatter: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        return numberFormatter
+    }()
+    var currency: String {
+        return Double.currencyFormatter.string(from: self as NSNumber) ?? ""
+    }
+}
+
+
 
