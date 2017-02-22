@@ -16,10 +16,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var billFeild: UITextField!
     @IBOutlet weak var tipControl: UISegmentedControl!
     
-    static var okTip = 0.0;
-    static var goodTip = 0.0;
-    static var excellentTip = 0.0;
-    
     static var minTip = 0.0;
     static var maxTip = 0.0;
     static var rounding = SettingsViewController.rounding;
@@ -47,27 +43,26 @@ class ViewController: UIViewController {
         billFeild.becomeFirstResponder()
         
         let defaults = UserDefaults.standard
-        let tips = defaults.object(forKey: "tips") as? [String] ?? [
+        let tips = defaults.object(forKey: "tips") as? [Double] ?? [
             SettingsViewController.okTip,
             SettingsViewController.goodTip,
             SettingsViewController.excellentTip
         ]
         
-        ViewController.okTip = tips[0].doubleValue
-        ViewController.goodTip = tips[1].doubleValue
-        ViewController.excellentTip = tips[2].doubleValue
-
+        let ok = tips[0].percent
+        let good = tips[1].percent
+        let excellent = tips[2].percent
         
-        tipControl.setTitle("OK (\(tips[0])%)", forSegmentAt: 0)
-        tipControl.setTitle("Good (\(tips[1])%)", forSegmentAt: 1)
-        tipControl.setTitle("Excellent (\(tips[2])%)", forSegmentAt: 2)
+        tipControl.setTitle("OK \(ok)", forSegmentAt: 0)
+        tipControl.setTitle("Good \(good)", forSegmentAt: 1)
+        tipControl.setTitle("Excellent \(excellent)", forSegmentAt: 2)
         ViewController.rounding = defaults.object(forKey: "rounding") as? [Int] ?? SettingsViewController.rounding
         
-        ViewController.maxTip = Double(defaults.object(forKey: "maxTip") as? String ?? SettingsViewController.maxTip)!
-        ViewController.minTip = Double(defaults.object(forKey: "minTip") as? String ?? SettingsViewController.minTip)!
+        ViewController.maxTip = defaults.object(forKey: "maxTip") as? Double ?? SettingsViewController.maxTip
+        ViewController.minTip = defaults.object(forKey: "minTip") as? Double ?? SettingsViewController.minTip
 
         if ((AppDelegate.lastBillAmount) != nil) {
-            billFeild.text = String(format: "%.2f", AppDelegate.lastBillAmount!)
+            billFeild.text = AppDelegate.lastBillAmount?.currencyNoSymbol
             AppDelegate.lastBillAmount = nil
         }
         if (billFeild.text != nil) {
@@ -100,7 +95,7 @@ class ViewController: UIViewController {
     }
     //@IBAction 
     func calculate(_ sender: Any) {
-        let tipPercentages = [ViewController.okTip, ViewController.goodTip, ViewController.excellentTip]
+        let tipPercentages = [SettingsViewController.okTip, SettingsViewController.goodTip, SettingsViewController.excellentTip]
         
         let bill = billFeild.text?.doubleValue ?? 0
 
@@ -136,7 +131,7 @@ class ViewController: UIViewController {
         tipLabel.text = tip.currency
         totalLabel.alpha = 0
         totalLabel.text = total.currency
-        UIView.animate(withDuration: 1.5, animations: {
+        UIView.animate(withDuration: 1, animations: {
             self.tipLabel.alpha = 1
             self.totalLabel.alpha = 1
         })

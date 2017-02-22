@@ -24,6 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 AppDelegate.lastBillAmount = nil
             }
         }
+
+        let appearance = defaults.object(forKey: "theme") as? String ?? "Light"
+        if (appearance == "Dark") {
+            let navigationBarAppearace = UINavigationBar.appearance()            
+            navigationBarAppearace.tintColor = UIColor.darkText
+            navigationBarAppearace.barTintColor = UIColor.init(red: 0.25, green: 0.75, blue: 1, alpha: 1)
+            navigationBarAppearace.barStyle = UIBarStyle.blackTranslucent
+        }
         
         return true
     }
@@ -56,16 +64,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension String {
     static let numberFormatter = NumberFormatter()
     var doubleValue: Double {
-        String.numberFormatter.decimalSeparator = "."
-        if let result =  String.numberFormatter.number(from: self) {
+        String.numberFormatter.decimalSeparator = Locale.current.decimalSeparator
+        let currencySymbol = Locale.current.currencySymbol
+        let newString = self.replacingOccurrences(of: currencySymbol!, with: "").replacingOccurrences(of: currencySymbol!, with: "", options: NSString.CompareOptions.literal, range:nil).trimmingCharacters(in: NSCharacterSet.whitespaces)
+        if let result =  String.numberFormatter.number(from: newString) {
             return result.doubleValue
         } else {
-            String.numberFormatter.decimalSeparator = ","
-            let currencySymbol = Locale.current.currencySymbol
-            let newString = self.replacingOccurrences(of: currencySymbol!, with: "")
-            if let result = String.numberFormatter.number(from: newString) {
-                return result.doubleValue
+            if (Locale.current.decimalSeparator == ".") {
+                String.numberFormatter.decimalSeparator = ","
+                if let result = String.numberFormatter.number(from: newString) {
+                    return result.doubleValue
+                }
             }
+            else if (Locale.current.decimalSeparator == ",") {
+                String.numberFormatter.decimalSeparator = "."
+                if let result = String.numberFormatter.number(from: newString) {
+                    return result.doubleValue
+                }
+            }
+            
         }
         return 0
     }
@@ -79,6 +96,21 @@ extension Double {
     }()
     var currency: String {
         return Double.currencyFormatter.string(from: self as NSNumber) ?? ""
+    }
+    var currencyNoSymbol: String {
+        //(AppDelegate.lastBillAmount?.currency)?.doubleValue //
+        let currencySymbol = Locale.current.currencySymbol
+        return (Double.currencyFormatter.string(from: self as NSNumber) ?? "").replacingOccurrences(of: currencySymbol!, with: "").trimmingCharacters(in: NSCharacterSet.whitespaces)
+    }
+    var percent: String {
+        let result = self.percentNoSymbol
+        return "\(result)%"
+    }
+    var percentNoSymbol: String {
+        let result = self.currencyNoSymbol
+        let end = result.index(result.endIndex, offsetBy: -1)
+        let range = result.startIndex..<end
+        return result.substring(with: range)
     }
 }
 

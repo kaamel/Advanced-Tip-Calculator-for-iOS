@@ -20,24 +20,27 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var roundUpDownControl: UISegmentedControl!
     
+    @IBOutlet weak var themeLabel: UILabel!
+    @IBOutlet weak var themeSwitch: UISwitch!
 
     @IBOutlet weak var example1Label: UILabel!
     @IBOutlet weak var example2Label: UILabel!
     
     static var rounding = [1,1];
  
-    static var okTip = "17";
-    static var goodTip = "20";
-    static var excellentTip = "25";
+    static var okTip = 17.0;
+    static var goodTip = 20.0;
+        
+    static var excellentTip = 23.0;
     
-    static var maxTip = "-1";
-    static var minTip = "0";
+    static var maxTip = -1.0;
+    static var minTip = -1.0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let defaults = UserDefaults.standard
-        let tips = defaults.object(forKey: "tips") as? [String] ?? [
+        let tips = defaults.object(forKey: "tips") as? [Double] ?? [
             SettingsViewController.okTip,
             SettingsViewController.goodTip,
             SettingsViewController.excellentTip
@@ -48,8 +51,8 @@ class SettingsViewController: UIViewController {
         roundUpDownControl.selectedSegmentIndex = SettingsViewController.rounding[1];
         showHideUpDownRounding()
         
-        let maxTip = Double(defaults.object(forKey: "maxTip") as? String ?? SettingsViewController.maxTip) ?? -1
-        let minTip = Double(defaults.object(forKey: "minTip") as? String ?? SettingsViewController.minTip) ?? 0
+        let maxTip = defaults.object(forKey: "maxTip") as? Double ?? SettingsViewController.maxTip
+        let minTip = defaults.object(forKey: "minTip") as? Double ?? SettingsViewController.minTip
 
         maxTipField.text = ""
         if (maxTip > 0) {
@@ -60,9 +63,13 @@ class SettingsViewController: UIViewController {
         if (minTip > 0) {
             minTipField.text = minTip.currency        }
         
-        okField.text = tips[0]
-        goodField.text = tips[1]
-        excellentField.text = tips[2]
+        okField.text = tips[0].percentNoSymbol
+        goodField.text = tips[1].percentNoSymbol
+        excellentField.text = tips[2].percentNoSymbol
+        
+        let theme = defaults.object(forKey: "theme") as? String ?? "Light"
+        themeLabel.text = theme
+        themeSwitch.setOn(themeLabel.text == "Light", animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,19 +82,26 @@ class SettingsViewController: UIViewController {
         print("settings view did disappear")
         
         let defaults = UserDefaults.standard
-        let ok = okField.text ?? SettingsViewController.okTip
-        let good = goodField.text ?? SettingsViewController.goodTip
-        let excellent = excellentField.text ?? SettingsViewController.excellentTip
-        let tips = [ok, good, excellent]
+        SettingsViewController.okTip = okField.text?.doubleValue ?? SettingsViewController.okTip
+        SettingsViewController.goodTip = goodField.text?.doubleValue ?? SettingsViewController.goodTip
+        SettingsViewController.excellentTip = excellentField.text?.doubleValue ?? SettingsViewController.excellentTip
+        let tips = [SettingsViewController.okTip, SettingsViewController.goodTip, SettingsViewController.excellentTip]
         
         defaults.set(SettingsViewController.rounding, forKey: "rounding")
         defaults.set(tips, forKey: "tips")
         
-        SettingsViewController.maxTip = "\(maxTipField.text?.doubleValue ?? -1)"
-        SettingsViewController.minTip = "\(minTipField.text?.doubleValue ?? 0)"
+        SettingsViewController.maxTip = (maxTipField.text?.doubleValue)!
+        SettingsViewController.minTip = (minTipField.text?.doubleValue)!
+        if (SettingsViewController.maxTip <= 0) {
+            SettingsViewController.maxTip = -1
+        }
+        if (SettingsViewController.minTip <= 0) {
+            SettingsViewController.minTip = -1
+        }
         defaults.set(SettingsViewController.maxTip, forKey: "maxTip")
         defaults.set(SettingsViewController.minTip, forKey: "minTip")
         
+        defaults.set(themeLabel.text, forKey: "theme")
     }
     
     @IBAction func onRounding(_ sender: Any) {
@@ -102,6 +116,15 @@ class SettingsViewController: UIViewController {
             roundUpDownControl.selectedSegmentIndex
         ]
         showHideUpDownRounding()
+    }
+    
+    @IBAction func onThemeChanged(_ sender: Any) {
+        if (themeSwitch.isOn) {
+            themeLabel.text = "Light"
+        }
+        else {
+            themeLabel.text = "Dark"
+        }
     }
     
     func showHideUpDownRounding() {
