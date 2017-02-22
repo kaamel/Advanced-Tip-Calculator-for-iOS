@@ -36,7 +36,11 @@ has set the default to round down and the tip is rounded down to 0, it will stil
 
 Here''s a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/lHBjCpr.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+[Imgur](http://i.imgur.com/n6K0cw6.gifv)
+
+
+Here is an the second part where locale is changed:
+[Imgur](http://i.imgur.com/1BUtoYh.gifv)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

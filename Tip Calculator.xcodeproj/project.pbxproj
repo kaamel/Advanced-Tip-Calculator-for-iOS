@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A247D9C1E5E377500755576 /* tc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A247D9B1E5E377500755576 /* tc.png */; };
 		5A8BEA051E58E907005CBF0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEA041E58E907005CBF0A /* AppDelegate.swift */; };
 		5A8BEA071E58E907005CBF0A /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEA061E58E907005CBF0A /* TipViewController.swift */; };
 		5A8BEA0A1E58E907005CBF0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BEA081E58E907005CBF0A /* Main.storyboard */; };
@@ -37,7 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5A247D9B1E5E377500755576 /* tc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tc.png; path = ../../../../Downloads/tc.png; sourceTree = "<group>"; };
 		5A8BEA011E58E907005CBF0A /* Tip Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tip Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A8BEA041E58E907005CBF0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A8BEA061E58E907005CBF0A /* TipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				5A8BEA081E58E907005CBF0A /* Main.storyboard */,
 				5A8BEA321E590942005CBF0A /* SettingsViewController.swift */,
 				5A8BEA0B1E58E907005CBF0A /* Assets.xcassets */,
-				5A247D9B1E5E377500755576 /* tc.png */,
 				5A8BEA0D1E58E907005CBF0A /* LaunchScreen.storyboard */,
 				5A8BEA101E58E907005CBF0A /* Info.plist */,
 			);
@@ -241,7 +238,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A247D9C1E5E377500755576 /* tc.png in Resources */,
 				5AE921CC1E5CC8B000EBDA3D /* README.md in Resources */,
 				5A8BEA0F1E58E907005CBF0A /* LaunchScreen.storyboard in Resources */,
 				5A8BEA0C1E58E907005CBF0A /* Assets.xcassets in Resources */,
