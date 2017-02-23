@@ -46,11 +46,14 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Most of the challenges had to do with figuring out the life cycles and text & currency <-> numbers converssions. I am sure
+there is an easy way to make theme changes without restarting the application but as of this writing I need do some more
+reading/searching before making it happen. I also was rushing it out the solution so didn't get to change the app  icon
+successfully.
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright 2017 [Kaamel Kermaani]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
