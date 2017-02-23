@@ -48,7 +48,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Most of the challenges had to do with figuring out the life cycles and text & currency <-> numbers converssions. I am sure
 there is an easy way to make theme changes without restarting the application but as of this writing I need do some more
-reading/searching before making it happen. I also was rushing it out the solution so didn't get to change the app  icon
+reading/searching before making it happen. I also was rushing out the submission, so didn't get to change the app  icon
 successfully.
 
 ## License
