@@ -3,14 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A4BCBB71E6C854B00D66349 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4BCBB61E6C854B00D66349 /* Images.xcassets */; };
 		5A8BEA051E58E907005CBF0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEA041E58E907005CBF0A /* AppDelegate.swift */; };
 		5A8BEA071E58E907005CBF0A /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEA061E58E907005CBF0A /* TipViewController.swift */; };
 		5A8BEA0A1E58E907005CBF0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BEA081E58E907005CBF0A /* Main.storyboard */; };
-		5A8BEA0C1E58E907005CBF0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BEA0B1E58E907005CBF0A /* Assets.xcassets */; };
 		5A8BEA0F1E58E907005CBF0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BEA0D1E58E907005CBF0A /* LaunchScreen.storyboard */; };
 		5A8BEA1A1E58E907005CBF0A /* Tip_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEA191E58E907005CBF0A /* Tip_CalculatorTests.swift */; };
 		5A8BEA251E58E907005CBF0A /* Tip_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BEA241E58E907005CBF0A /* Tip_CalculatorUITests.swift */; };
@@ -36,11 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A4BCBB61E6C854B00D66349 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5A8BEA011E58E907005CBF0A /* Tip Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tip Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A8BEA041E58E907005CBF0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A8BEA061E58E907005CBF0A /* TipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
 		5A8BEA091E58E907005CBF0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5A8BEA0B1E58E907005CBF0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A8BEA0E1E58E907005CBF0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A8BEA101E58E907005CBF0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A8BEA151E58E907005CBF0A /* Tip CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tip CalculatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,11 +102,11 @@
 		5A8BEA031E58E907005CBF0A /* Tip Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				5A4BCBB61E6C854B00D66349 /* Images.xcassets */,
 				5A8BEA041E58E907005CBF0A /* AppDelegate.swift */,
 				5A8BEA061E58E907005CBF0A /* TipViewController.swift */,
 				5A8BEA081E58E907005CBF0A /* Main.storyboard */,
 				5A8BEA321E590942005CBF0A /* SettingsViewController.swift */,
-				5A8BEA0B1E58E907005CBF0A /* Assets.xcassets */,
 				5A8BEA0D1E58E907005CBF0A /* LaunchScreen.storyboard */,
 				5A8BEA101E58E907005CBF0A /* Info.plist */,
 			);
@@ -214,7 +214,7 @@
 				};
 			};
 			buildConfigurationList = 5A8BE9FC1E58E907005CBF0A /* Build configuration list for PBXProject "Tip Calculator" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -239,8 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AE921CC1E5CC8B000EBDA3D /* README.md in Resources */,
+				5A4BCBB71E6C854B00D66349 /* Images.xcassets in Resources */,
 				5A8BEA0F1E58E907005CBF0A /* LaunchScreen.storyboard in Resources */,
-				5A8BEA0C1E58E907005CBF0A /* Assets.xcassets in Resources */,
 				5A8BEA0A1E58E907005CBF0A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +417,8 @@
 		5A8BEA2A1E58E907005CBF0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tip Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -429,6 +431,8 @@
 		5A8BEA2B1E58E907005CBF0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Tip Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

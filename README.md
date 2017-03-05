@@ -4,7 +4,7 @@
 
 Submitted by: **Kaamel Kermaani**
 
-Time spent: **6** hours spent in total
+Time spent: **7** hours spent in total
 
 ## User Stories
 
@@ -24,17 +24,17 @@ The following **additional** features are implemented:
 - [x] List anything else that you can get done to improve the app functionality!
 * The user can set a rounding option for the tip amount or total
 * The options are 1) round up 2) round normal ) round down
- * Examples for each options are displayed for clarity
- * If rounding is not enabled, the rounding options and examples are hidden
+* Examples for each options are displayed for clarity
+* If rounding is not enabled, the rounding options and examples are hidden
 * The user can set a minimum tip (e.g. $1.00) and/or a maximum tip (e.g. $100.00)
- * If there are conflicts between rounding and the limits, the rounding is ignored. For example if minimum tip is set to $1.00 and user
+* If there are conflicts between rounding and the limits, the rounding is ignored. For example if minimum tip is set to $1.00 and user
 has set the default to round down and the tip is rounded down to 0, it will still be kept at $1.00.
 * The app theme can be set to light to dark
- * The app needs to be reinitialized for the new theme to take effect
+* The app needs to be reinitialized for the new theme to take effect
 
 ## Video Walkthrough 
 
-Here''s a walkthrough of implemented user stories:
+Here is a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/n6K0cw6.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
@@ -46,11 +46,14 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Most of the challenges had to do with figuring out the life cycles and text & currency <-> numbers converssions. I am sure
+there is an easy way to make theme changes without restarting the application but as of this writing I need do some more
+reading/searching before making it happen. I also was rushing out the submission, so didn't get to change the app  icon
+successfully.
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright 2017 [Kaamel Kermaani]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
